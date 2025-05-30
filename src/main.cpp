@@ -57,7 +57,7 @@ void pausa_mims(void){
 
 }
 void pausa_solms(void){
-    OCR0A=40;
+    OCR0A=159;
     TCNT0=0;
     while(!(TIFR0&(1<<OCF0A)));
     TIFR0|=(1<<OCF0A);
@@ -110,29 +110,30 @@ int main(void){
       pausa_mims();
      }
      PORTB&=~(0x01);
-     _delay_ms(1);
+     _delay_ms(250);
 
-     for (int i =0;i<784;i++){
-      PORTB^=0x01;
-      pausa_solms();
-     }
-     PORTB&=~(0x01);
+     
 
   for (int i =0;i<392;i++){
       PORTB^=0x01;
       pausa_solams();
      }
      PORTB&=~(0x01);
+     _delay_ms(1);
+  for (int i =0;i<196;i++){
+      PORTB^=0x01;
+      pausa_solms();
+     }
+     PORTB&=~(0x01);
 
-     
-     _delay_ms(10000);
-      
-      
-      
-      
-      
+     _delay_ms(1000);
+
     }
 
   return 0;
 }//d0 261.63 - mi 330 - sol 392 Hz
 //118 - 94 - 79
+
+
+
+
